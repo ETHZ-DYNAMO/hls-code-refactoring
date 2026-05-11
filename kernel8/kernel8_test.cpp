@@ -6,7 +6,6 @@
 void kernel8_sw(int a[ARRAY_SIZE], int b[ARRAY_SIZE], int m[ARRAY_SIZE], int s)
 {
     LOOP1: for (int i=0; i < ARRAY_SIZE; i++) {
-    	int s = 0;
     	LOOP2: for (int j=0; j < m[i]; j++) {
         	s = a[j * s];
     	}
@@ -25,8 +24,8 @@ int main()
     
     // Initialize arrays
     for (int i=0; i < ARRAY_SIZE; i++) {
-    	a[i] = i;
-    	m[i] = i % 100 + 2;
+        a[i] = (i % 7) + 1; 
+    	m[i] = (i % 100) + 2;
     }
     s = 1;
     
@@ -40,7 +39,7 @@ int main()
     bool pass = true;
     for (int i = 0; i < ARRAY_SIZE; i++) {
     	if (b[i] != b_sw[i]) {
-    		printf("Error in b at index %u", i);
+    		printf("Error in b at index %u \n", i);
     		pass = false;
     	}
     }
